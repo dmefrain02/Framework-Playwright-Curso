@@ -1,5 +1,5 @@
 name: Playwright Tests # Nombre
-on:
+on: #acciones que activan el proceso 
   push:
     branches: [ main, master ] #cuando se haga un push a las ramas
   pull_request:
@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest # SO donde se ejecuta
     steps:
     - uses: actions/checkout@v4 # hacer checkout del codigo
-    - uses: actions/setup-node@v4 
+    - uses: actions/setup-node@v4 #instalar node en el contenedor
       with:
         node-version: lts/*
-    - name: Install dependencies
+    - name: Install dependencies #instala dependencias
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
