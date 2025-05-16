@@ -46,7 +46,7 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
     
-    headless: false, //deshabilitar estado defecto headless en los navegadors
+    headless: true, //deshabilitar estado defecto headless en los navegadors
 
     //screenshot: 'on',//toma screenshots al final de las pruebas
     screenshot: 'only-on-failure',//toma screenshots sólo al fallar
