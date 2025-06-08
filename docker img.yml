@@ -1,0 +1,24 @@
+pipeline {
+   agent { docker { image 'mcr.microsoft.com/playwright:v1.52.0-noble' } }
+   stages {
+      stage('e2e-tests') {
+         steps {
+            git url: "https://github.com/dmefrain02/Framework-Playwright-Curso", branch:"main"
+            sh 'npm ci'
+            sh 'npx playwright test'
+         }
+      }
+   }
+   post{
+       always{
+           publishHTML([
+               reportNAME: "Playwright Report",
+               reportDir: "playwright-report",
+               reportFiles: "index.html",
+               keepAll: true,
+               alwayslinkToLastBuild: true,
+               allowMissing: false
+               ])
+       }
+   }
+}
